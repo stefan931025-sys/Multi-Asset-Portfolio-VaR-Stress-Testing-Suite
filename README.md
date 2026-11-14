@@ -1,14 +1,12 @@
 # Multi-Asset Portfolio VaR & Risk Attribution Suite
 
-[![Multi-Asset Portfolio VaR CI](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/stefan931025-sys/Multi-Asset-Portfolio-VaR-Stress-Testing-Suite)
-[![Python Version](https://img.shields.io/badge/python-3.10-blue.svg)](https://www.python.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![CI Workflow](https://github.com/stefan931025-sys/Multi-Asset-Portfolio-VaR-Stress-Testing-Suite/actions/workflows/ci.yml/badge.svg)
+![Python Version](https://img.shields.io/badge/python-3.10%2B-blue.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
 
 An institutional risk management tool for computing Value-at-Risk (VaR) and conducting tail-risk stress testing across multi-asset portfolios (Equities, FX, and Fixed Income).
 
----
-
-## Key Features
+## 🚀 Key Features
 
 * **Dual VaR Calculation Methodologies:** Implements both Parametric (Variance-Covariance) and Monte Carlo simulation engines (10,000+ trials).
 * **Cross-Asset Correlation Modeling:** Accounts for cross-asset correlations across equity, currency, and fixed income instruments.
@@ -17,17 +15,34 @@ An institutional risk management tool for computing Value-at-Risk (VaR) and cond
 
 ---
 
-## Mathematical Specifications
+## 📊 Mathematical Specifications
 
 ### 1. Parametric Portfolio VaR
+
 $$\text{VaR}_{\alpha} = z_{\alpha} \cdot \sigma_p \cdot \sqrt{t}$$
+
 Where $\sigma_p = \sqrt{w^T \Sigma w}$ is the portfolio volatility derived from asset weights vector $w$ and covariance matrix $\Sigma$.
 
 ### 2. Monte Carlo Simulation Engine
+
 Simulating asset price paths via Geometric Brownian Motion (GBM) with Cholesky decomposition of the correlation matrix:
-$$S_{i, t} = S_{i, t-1} \exp\left( \left(\mu_i - \frac{\sigma_i^2}{2}\right)\Delta t + \sigma_i \sqrt{\Delta t} Z_i \right)$$
+
+$$S_t = S_{t-1} \exp\left((\mu - \frac{\sigma^2}{2})\Delta t + \sigma \sqrt{\Delta t} Z\right)$$
 
 ---
 
-## System Architecture & Data Flow
+## 📁 Repository Structure
 
+```text
+Multi-Asset-Portfolio-VaR-Stress-Testing-Suite/
+├── .github/
+│   └── workflows/
+│       └── ci.yml         # GitHub Actions automated test workflow
+├── core/
+│   └── risk_engine.py     # Parametric & Monte Carlo VaR engine
+├── tests/
+│   └── test_risk_engine.py# Automated pytest suite
+├── main.py                # Main execution script
+├── repo_auditor.py        # Static AST analysis governance tool
+├── requirements.txt       # Python dependencies
+└── README.md              # System documentation
